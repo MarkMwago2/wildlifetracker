@@ -38,7 +38,7 @@
             <div class="custom-select" style="width:200px;">
                 <select name="endangeredAnimalSelected">
                     #foreach($endangered_animal in $endangeredAnimals)
-                    <option value="$endangered_animal.getId()">$endangered_animal.getName()</option>
+                    <option value="$endangered.getId()">$endangered.getName()</option>
                     #end
                 </select>
             </div>
@@ -82,7 +82,7 @@
     <a href="/animal/new">Add animal</a>
     #else
     #foreach ($endangeredAnimal in $endangeredAnimals)
-    <a href="/endangered_animal/$endangeredAnimal.getId()" class="thumbnail">
+    <a href="/endangered/$endangered.getId()" class="thumbnail">
         <h4>$endangeredAnimal.getName()</h4>
         <p>Click for details</p>
     </a>
