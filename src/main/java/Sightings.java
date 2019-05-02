@@ -3,13 +3,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Sighting {
+public class Sightings {
     private int animal_id;
     private String location;
     private String ranger_name;
     private int id;
 
-    public Sighting(int animal_id, String location, String ranger_name) {
+    public Sightings(int animal_id, String location, String ranger_name) {
         this.animal_id = animal_id;
         this.location = location;
         this.ranger_name = ranger_name;
@@ -33,11 +33,11 @@ public class Sighting {
     }
 
     @Override
-    public boolean equals(Object otherSighting) {
-        if(!(otherSighting instanceof Sighting)) {
+    public boolean equals(Object otherSightings) {
+        if(!(otherSightings instanceof Sightings)) {
             return false;
         } else {
-            Sighting newSighting = (Sighting) otherSighting;
+            Sightings newSighting = (Sightings) otherSightings;
             return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
         }
     }
@@ -55,22 +55,22 @@ public class Sighting {
         }
     }
 
-    public static List<Sighting> all() {
+    public static List<Sightings> all() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM sightings;";
             return con.createQuery(sql)
                     .throwOnMappingFailure(false)
-                    .executeAndFetch(Sighting.class);
+                    .executeAndFetch(Sightings.class);
         }
     }
 
-    public static Sighting find(int id) {
+    public static Sightings find(int id) {
         try(Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM sightings WHERE id=:id;";
-            Sighting sighting = con.createQuery(sql)
+            Sightings sightings = con.createQuery(sql)
                     .addParameter("id", id)
-                    .executeAndFetchFirst(Sighting.class);
-            return sighting;
+                    .executeAndFetchFirst(Sightings.class);
+            return sightings;
         } catch (IndexOutOfBoundsException exception) {
             return null;
         }
