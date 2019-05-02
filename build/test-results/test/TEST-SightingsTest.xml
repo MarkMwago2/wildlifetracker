@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SightingsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-05-02T09:24:46" hostname="mark-HP-Laptop-15-bs1xx" time="1.421">
+  <properties/>
+  <testcase name="equals_returnsTrueIfLocationAndDescriptionAreSame_true" classname="SightingsTest" time="0.857"/>
+  <testcase name="sighting_instantiatesCorrectly_true" classname="SightingsTest" time="0.056"/>
+  <testcase name="save_insertsObjectIntoDatabase_Sighting" classname="SightingsTest" time="0.129"/>
+  <testcase name="all_returnsAllInstancesOfSighting_true" classname="SightingsTest" time="0.077"/>
+  <testcase name="find_returnsSightingWithSameId_secondSighting" classname="SightingsTest" time="0.299"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
