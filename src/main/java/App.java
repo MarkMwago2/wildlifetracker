@@ -24,7 +24,7 @@ public class App {
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("animals", Animal.all());
-            model.put("endangeredAnimals", Endangered.all());
+            model.put("endangered", Endangered.all());
             model.put("sightings", Sightings.all());
             model.put("template", "templates/index.vtl");
             return new ModelAndView(model, layout);
@@ -34,7 +34,7 @@ public class App {
         get("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("animals", Animal.all());
-            model.put("endangeredAnimals", Endangered.all());
+            model.put("endangered", Endangered.all());
             model.put("sightings", Sightings.all());
             model.put("template", "templates/sightings.vtl");
             return new ModelAndView(model, layout);
@@ -73,7 +73,7 @@ public class App {
         get("/animal/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("animals", Animal.all());
-            model.put("endangeredAnimals", Endangered.all());
+            model.put("endangered", Endangered.all());
             model.put("template", "templates/animal-form.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
@@ -88,13 +88,13 @@ public class App {
                 Endangered endangeredAnimal = new Endangered(name, health, age);
                 endangeredAnimal.save();
                 model.put("animals", Animal.all());
-                model.put("endangeredAnimals", Endangered.all());
+                model.put("endangered", Endangered.all());
             } else {
                 String name = request.queryParams("name");
                 Animal animal = new Animal(name);
                 animal.save();
                 model.put("animals", Animal.all());
-                model.put("endangeredAnimals", Endangered.all());
+                model.put("endangered", Endangered.all());
             }
             response.redirect("/");
             return null;
@@ -108,11 +108,11 @@ public class App {
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
-        get("/endangered_animal/:id", (request, response) -> {
+        get("/Endangered/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             Endangered endangeredAnimal = Endangered.find(Integer.parseInt(request.params("id")));
-            model.put("endangeredAnimal", endangeredAnimal);
-            model.put("template", "templates/endangered-animal.vtl");
+            model.put("Endangered", endangeredAnimal);
+            model.put("template", "templates/endangered.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 

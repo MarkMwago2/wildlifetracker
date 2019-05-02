@@ -34,7 +34,7 @@ public class Endangered extends Animals {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO endangered_animals (name, health, age) VALUES (:name, :health, :age);";
+            String sql = "INSERT INTO endangered(name, health, age) VALUES (:name, :health, :age);";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
                     .addParameter("health", this.health)
@@ -46,7 +46,7 @@ public class Endangered extends Animals {
 
     public static List<Endangered> all() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM endangered_animals;";
+            String sql = "SELECT * FROM endangered;";
             return con.createQuery(sql)
                     .executeAndFetch(Endangered.class);
         }
@@ -54,7 +54,7 @@ public class Endangered extends Animals {
 
     public static Endangered find(int id) {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM endangered_animals WHERE id=:id;";
+            String sql = "SELECT * FROM endangered WHERE id=:id;";
             Endangered Endangered = con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Endangered.class);
@@ -64,7 +64,7 @@ public class Endangered extends Animals {
 
     public void updateHealth(String health) {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "UPDATE endangered_animals SET health=:health WHERE id=:id;";
+            String sql = "UPDATE endangered SET health=:health WHERE id=:id;";
             con.createQuery(sql)
                     .addParameter("id", id)
                     .addParameter("health", health)
@@ -74,7 +74,7 @@ public class Endangered extends Animals {
 
     public void updateAge(String age) {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "UPDATE endangered_animals SET age=:age WHERE id=:id;";
+            String sql = "UPDATE endangered SET age=:age WHERE id=:id;";
             con.createQuery(sql)
                     .addParameter("age", age)
                     .addParameter("id", id)
