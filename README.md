@@ -33,6 +33,10 @@ This app allows the user to track and record endangered animals once they are si
 2. Postgres SQL
 3. Spark
 
+**SCREENSHOTS**
+
+file:///home/mark/Pictures/Screenshot%20from%202019-05-02%2012-39-27.png
+
 **SUPPORT & CONTACT DETAILS**
 
 For additions on the project or to work with me you can reach me at markmwago@gmail.com
