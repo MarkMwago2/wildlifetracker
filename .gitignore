@@ -32,8 +32,3 @@
 ehthumbs.db
 Thumbs.db
 
-# Java and Gradle #
-############
-build/
-.gradle/
-!gradle-wrapper
